@@ -1,4 +1,4 @@
-const mongoose = require('../../database/index.js');
+const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
     name: {
