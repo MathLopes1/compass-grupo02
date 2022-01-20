@@ -24,5 +24,29 @@ class EmployeeController  {
     }
 
 }
+  async updateEmployee(req, res){ 
+       
+    const id = req.params.id
+    const { name, cpf, office, birthday} = req.body
+    const employee = { name, cpf, office, birthday}
+    
+    try {
+ const updatedEmployee = await employeesSchema.updateOne({ _id: id, employee}, {new:true})
+
+      if(updatedEmployee.matchedCount === 0) { 
+
+       return res.status(422).json({message: 'Employee not found'})
+        
+      }
+
+      return res.status(200).json(employee)
+
+  } catch (error) {
+
+      return res.status(500).json(error.message)
+
+  }
+
+}
 }
 module.exports = new EmployeeController();
