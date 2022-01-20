@@ -6,4 +6,4 @@ class employeesRepository  {
   }
 }
 
-module.exports = new employeesRepository(); 
+module.exports = new employeesRepository();

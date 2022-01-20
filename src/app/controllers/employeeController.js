@@ -12,7 +12,7 @@ class EmployeeController  {
     }
   }
 
-  async getAllEmployes(req, res){
+  async getAllEmployes(req, res){ 
     try {
    const allEmployees = await employeesSchema.find({})
 
