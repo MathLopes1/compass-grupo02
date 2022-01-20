@@ -1,4 +1,4 @@
-const EmployeesRepository = require('../../database/index.js');
+const EmployeesRepository = require('../../app/repository/employeesRepository');
 
 class EmployeesService {
   async create(payload) {

@@ -3,26 +3,26 @@ const mongoose = require('mongoose');
 const employeeSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        require: true
     },
     cpf: {
         type: String,
-        required: true,
+        require: true,
         unique: true
     },
     office: {
         type: String,
         enum: ['gerente', 'vendedor', 'caixa'],
-        required: true,
+        require: true,
     },
     birthday: {
         type: Date,
-        required: true
+        require: true
     },
     situation: {
         type: String,
         default: 'activate',
-        required: true
+        require: true
     },
     createdAt: {
         type: Date,

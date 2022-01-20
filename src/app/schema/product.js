@@ -3,20 +3,20 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        require: true
     },
     category: {
         type: String,
-        required: true
+        require: true
     },
     price: {
         type: Float,
-        required: true
+        require: true
     },
     employee_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Employees',
-        required: true
+        require: true
     }
 });
 
