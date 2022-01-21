@@ -6,7 +6,7 @@ class EmployeeController {
       const dados = await EmployeeService.create(req.body);
       console.log(req.body)
       return res.status(201).json({
-        '_id': dados.id,
+        'employee_id': dados.employee_id,
         'name': dados.name,
         'cpf': dados.cpf,
         'office': dados.office,
