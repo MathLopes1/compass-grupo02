@@ -1,6 +1,6 @@
-const employeesSchema = require('../schema/employees');
+const employeesSchema = require('../schema/employees.js');
 
-class employeesRepository  {
+class employeesRepository {
   async create(payload) {
     return employeesSchema.create(payload);
   }
