@@ -1,10 +1,11 @@
-const EmployeesRepository = require('../../app/repository/employeesRepository');
+const EmployeesRepository = require('../../app/repository/employeesRepository.js');
 
-class EmployeesService {
+class EmployeeService {
   async create(payload) {
-    const result = await EmployeesRepository.create(payload);
-    return result;
+    const dados = await EmployeesRepository.create(payload);
+    return dados;
   }
 }
 
-module.exports = new EmployeesService();
+
+module.exports = new EmployeeService();

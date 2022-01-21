@@ -6,6 +6,7 @@ module.exports = (server, routes, prefix = '/app/v1/employee') => {
   routes.get('/',  EmployeeController.getAllEmployes)
   routes.put('/:id',  EmployeeController.updateEmployee)
   routes.delete('/:id', EmployeeController.deleteEmployee)
+
   server.use(prefix, routes);
 
 }
