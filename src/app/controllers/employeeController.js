@@ -25,9 +25,9 @@ class EmployeeController {
     }
   }
 
-  async getAllEmployes(req, res){ 
+  async getAllEmployees(req, res){ 
     try {
-   const allEmployees = await employeesSchema.find({})
+   const allEmployees = await EmployeeService.find({})
 
         return res.status(200).json(allEmployees)
 
@@ -74,7 +74,7 @@ async deleteEmployee(req, res){
   
   const id = req.params.id
 
-  const employee = await employeesSchema.findOne({  _id: id})
+  const employee = await EmployeeService.findOne({  _id: id})
 
   if(!employee) {
 
