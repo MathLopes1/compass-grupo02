@@ -1,3 +1,4 @@
+
 const productSchema = require('../schema/product.js');
 
 class ProductRepository  {

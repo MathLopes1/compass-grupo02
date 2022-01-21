@@ -10,8 +10,6 @@ class ProductController {
         return res.status(201).json(allProducts)
     } catch (error) {
         return res.status(500).json(error.message)
-    }
-  }
 }
 
 module.exports = new ProductController();

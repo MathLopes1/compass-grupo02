@@ -1,10 +1,18 @@
-const ProductRepository = require('../../app/repository/productRepository.js');
+
+const ProductRepository = require('../../app/repository/productRepository');
+const employeesSchema = require('../schema/employees');
 
 class ProductService {
-  async create(payload) {
 
-    const result = await ProductRepository.create(payload);
-    return result;
+  async create(payload) {
+      const employe = await employeesSchema.findOne({ _id: payload.employee_id, office: "gerente", situation: "activate" });
+
+      if (employe == null) {
+        throw "Funcionário não pode cadastrar produto";
+      }
+
+      const result = await ProductRepository.create(payload);
+      return result;
   }
 }
 
