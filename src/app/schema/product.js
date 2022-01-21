@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
         require: true
     },
     price: {
-        type: Float,
+        type: mongoose.Schema.Types.Decimal128,
         require: true
     },
     employee_id: {
