@@ -1,18 +1,15 @@
 const ProductService = require('../service/productService.js');
+const productSchema = require('../schema/product.js')
 
 class ProductController {
     
-  async create(req, res) {
+  async getAllProducts(req,res){
+
     try {
-      const result = await ProductService.create(req.body);
-      return res.status(201).json(result);
+        const allProducts = await productSchema.find({})
+        return res.status(201).json(allProducts)
     } catch (error) {
-      return res.status(400).json({
-        'message': 'Bad Request',
-        'details': [{'message': error }]
-      });
-    }
-  }
+        return res.status(500).json(error.message)
 }
 
 module.exports = new ProductController();

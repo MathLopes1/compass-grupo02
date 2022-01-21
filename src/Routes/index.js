@@ -1,11 +1,12 @@
 const { Router } = require('express');
-const employee = require('../routes/employeeRouter');
-const product = require('../routes/productRouter');
+const employeeRouter = require('../routes/employeeRouter.js');
+const productRouter = require('../Routes/productRouter.js')
+
 
 module.exports = server => {
   server.use((req, res, next) => {
-    employee(server, new Router());
-    product(server, new Router());
+    employeeRouter(server, new Router());
+    productRouter(server,new Router())
     next();
   });
 };

@@ -1,3 +1,4 @@
+
 const ProductRepository = require('../../app/repository/productRepository');
 const employeesSchema = require('../schema/employees');
 
@@ -13,7 +14,6 @@ class ProductService {
       const result = await ProductRepository.create(payload);
       return result;
   }
-
 }
 
 module.exports = new ProductService();

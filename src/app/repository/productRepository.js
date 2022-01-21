@@ -1,4 +1,5 @@
-const productSchema = require('../schema/product');
+
+const productSchema = require('../schema/product.js');
 
 class ProductRepository  {
   async create(payload) {
