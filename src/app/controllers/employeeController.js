@@ -47,6 +47,32 @@ class EmployeeController  {
 
   }
 
+
+}
+
+async deleteEmployee(req, res){ 
+  
+  const id = req.params.id
+
+  const employee = await employeesSchema.findOne({  _id: id})
+
+  if(!employee) {
+
+    return res.status(404).json({message: 'Employee not found'})
+
+  }
+  try { 
+
+      await employeesSchema.deleteOne({  _id: id})
+
+      return res.status(204).json({message: 'Employee successfully deleted!'})
+
+  } catch (error) {
+
+    return res.status(400).json(error.message)
+
+}
+
 }
 }
 module.exports = new EmployeeController();
