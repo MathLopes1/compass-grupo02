@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: String,
+        type: mongoose.Schema.Types.Decimal128,
         required: true
     },
     createdAt: {
@@ -22,13 +22,12 @@ const productSchema = new mongoose.Schema({
         default: Date.now()
     },
     employee_id: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'Employees',
         required: true
     }
 });
 
-const product = mongoose.model('Product', productSchema)
-console.log("product")
-console.log(product)
+const product = mongoose.model('Product', productSchema);
+
 module.exports = product;

@@ -10,13 +10,16 @@ module.exports = async (req, res, next) => {
     });
 
     const { error } = await schema.validate(req.body, { abortEarl: true });
-    console.log("validation")
-    console.log(req.body)
     
     if (error) {
-        throw error;
-    }
+      const result = {
+        message: 'Bad Request',
+        details: error.details
+      }
 
+      throw result;
+    }
+    //retornar os dados do jeito que felipe mandou no arquivo
     return next();
   } catch (error) {
     return res.status(400).json(error);
