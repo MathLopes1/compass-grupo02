@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
     const schema = Joi.object({
       name: Joi.string().required(),
       category: Joi.string().required(),
-      price: Joi.string().required(),
+      price: Joi.number().required(),
       employee_id: Joi.string().required()
     });
 

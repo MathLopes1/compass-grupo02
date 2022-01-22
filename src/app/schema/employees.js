@@ -33,11 +33,13 @@ const employeeSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        select: false
     },
     updatedAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        select: false
     }
 });
 
