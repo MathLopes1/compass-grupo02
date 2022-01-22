@@ -10,6 +10,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Node.js](https://nodejs.org/en/)
 - [Mongoose](https://mongoosejs.com/)
 
+#### Bibliotecas ultizadas:
+- Join 
+- uuid
+
 
 ### Features
 
