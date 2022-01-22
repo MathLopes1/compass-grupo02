@@ -3,7 +3,7 @@ const productSchema = require('../schema/product.js')
 
 class ProductController {
     
-  async find(req,res){
+  async findProducts(req,res){
 
     try {
         const name = req.query.name
