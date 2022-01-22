@@ -14,6 +14,11 @@ class ProductService {
       const result = await ProductRepository.create(payload);
       return result;
   }
+
+  async find(payload){
+    const allProducts = await ProductRepository.find(payload);
+    return allProducts;
+  }
 }
 
 module.exports = new ProductService();
