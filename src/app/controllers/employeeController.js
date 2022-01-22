@@ -27,8 +27,18 @@ class EmployeeController {
 
   async getAllEmployees(req, res) {
     try {
+
+
+      const name = req.query.name
+      const office = req.query.office
+
+   const allEmployees = await employeesSchema.find(name, office)
+
+        return res.status(200).json(allEmployees)
+
       const allEmployees = await EmployeeService.find({});
       return res.status(200).json(allEmployees);
+
 
     } catch (error) {
       return res.status(500).json(error.message)
