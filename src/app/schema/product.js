@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema({
     product_id: {
         type: String,
         default: uuidv4(),
-        index: true,
+        index:true,
         mongoose:mongoose.ObjectId
     },
     name: {
@@ -17,16 +17,18 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: mongoose.Schema.Types.Decimal128,
+        type: Number,
         required: true
     },
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        select: false
     },
     updatedAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        select: false
     },
     employee_id: {
         type: String,
@@ -36,6 +38,15 @@ const productSchema = new mongoose.Schema({
         required: true
     }
 });
+
+productSchema.set('toJSON', {
+    transform: function (doc, ret, options) {
+        delete ret._id;
+        delete ret.__v;
+        delete ret.createdAt;
+        delete ret.updatedAt;
+    }
+}); 
 
 const product = mongoose.model('Product', productSchema);
 

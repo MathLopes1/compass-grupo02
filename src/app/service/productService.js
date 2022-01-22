@@ -12,6 +12,7 @@ class ProductService {
       }
 
       const result = await ProductRepository.create(payload);
+
       return result;
   }
 
