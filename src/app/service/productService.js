@@ -15,6 +15,11 @@ class ProductService {
 
       return result;
   }
+
+  async find(payload){
+    const allProducts = await ProductRepository.find(payload);
+    return allProducts;
+  }
 }
 
 module.exports = new ProductService();
