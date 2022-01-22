@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
       name: Joi.string().required(),
       category: Joi.string().required(),
       price: Joi.number().required(),
-      employee_id: Joi.string().required()
+      employee_id: Joi.string().guid({ version: [ 'uuidv4' ]}).required()
     });
 
     const { error } = await schema.validate(req.body, { abortEarl: true });
