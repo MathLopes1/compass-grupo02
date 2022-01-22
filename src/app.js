@@ -3,13 +3,13 @@ const router = require('./routes');
 require('./database/index');
 
 class App {
-  constructor() {
+  constructor () {
     this.server = express();
-    this.middleware();
     this.routes();
+    this.middlewares();
   }
 
-  middleware() {
+  middlewares() {
     this.server.use(express.json());
   }
 
