@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
 
       throw result;
     }
-    //retornar os dados do jeito que felipe mandou no arquivo
+    
     return next();
   } catch (error) {
     return res.status(400).json(error);
