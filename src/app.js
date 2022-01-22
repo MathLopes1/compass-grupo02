@@ -4,8 +4,8 @@ require('./database/index');
 
 class App {
   constructor () {
-    this.server = express()
-    this.routes()
+    this.server = express();
+    this.routes();
     this.middlewares();
   }
 
