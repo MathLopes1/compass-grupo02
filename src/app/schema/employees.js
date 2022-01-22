@@ -7,8 +7,7 @@ const employeeSchema = mongoose.Schema({
         default: uuidv4(),
         index:true,
         mongoose:mongoose.ObjectId
-
-      },
+    },
     name: {
         type: String,
         require: true

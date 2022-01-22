@@ -5,7 +5,7 @@ const employeesSchema = require('../schema/employees');
 class ProductService {
 
   async create(payload) {
-      const employe = await employeesSchema.findOne({ _id: payload.employee_id, office: "gerente", situation: "activate" });
+      const employe = await employeesSchema.findOne({ employee_id: payload.employee_id, office: "gerente", situation: "activate" });
 
       if (employe == null) {
         throw "Funcionário não pode cadastrar produto";
