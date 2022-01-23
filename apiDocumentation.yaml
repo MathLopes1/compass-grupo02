@@ -121,7 +121,20 @@ paths:
             content: 
               application/json:
               example: bad request
-            
+    
+    delete: 
+      summary: Excluir Funcionários
+      parameters: 
+      - name: uuid
+        in: path
+        schema: 
+          type: string
+        required: true
+      responses: 
+      204:
+        description: Funcionário excluído
+      404: 
+      example: Employee not found        
           
 
   
