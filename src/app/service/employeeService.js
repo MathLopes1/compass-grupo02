@@ -57,6 +57,12 @@ class EmployeeService {
       'situation': payload.situation,
     });
 
+    function formataCPF(cpf){
+      cpf = cpf.replace(/[^\d]/g, "");
+      
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    }
+
     function convertDateToPt(date) {
       let datePt = date.toLocaleString('en-US', {
         day: '2-digit',
@@ -70,7 +76,7 @@ class EmployeeService {
     const result = {
       'employee_id': dados.employee_id,
       'name': dados.name,
-      'cpf': dados.cpf,
+      'cpf': formataCPF(dados.cpf),
       'office': dados.office,
       'birthday': convertDateToPt(dados.birthday),
       'situation': dados.situation
