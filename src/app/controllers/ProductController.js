@@ -10,7 +10,7 @@ class ProductController {
     } catch (error) {
       return res.status(400).json({
         'message': 'Bad request',
-        'details': [{ 'message': error }]
+        'details': [{ 'message': error.message }]
       });
     }
   }

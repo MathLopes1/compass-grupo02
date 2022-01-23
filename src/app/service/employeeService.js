@@ -6,8 +6,7 @@ class EmployeeService {
       'name': payload.name,
       'cpf': payload.cpf,
       'office': payload.office,
-      'birthday': new Date(payload.birthday),
-      'situation': payload.situation
+      'birthday': new Date(payload.birthday)
     });
 
     function convertDateToPt(date) {
