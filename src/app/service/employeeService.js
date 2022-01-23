@@ -15,6 +15,19 @@ class EmployeeService {
     const employee = await EmployeesRepository.findOne(payload);
     return employee;
   }
+  async update(id, payload) {
+
+    const dados = await EmployeesRepository.update(id, payload);
+
+    return dados;
+
+  }
+
+  async findId(id) {
+
+    return EmployeesRepository.findId(id);
+
+  }
 }
 
 

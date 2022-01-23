@@ -1,0 +1,113 @@
+openapi: 3.0.1
+info:
+  title: Delicias da Maria
+  description: API da Delicias da Maria,para gerenciamento de funcionários e produtos
+  version: 0.0.1
+  license:
+    name: "Lincença: GPLv3"
+    url: https://www.gnu.org/licenses/gpl-3.0.html
+externalDocs:
+  description: Repositório-(Github)
+  url: https://github.com/MathLopes1/compass-grupo02
+servers:
+- url: http://localhost:3000/api/v1/
+  description: Url_Base
+paths:
+  /employee:
+    get:
+      summary: Listar Todos os Funcionários
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                proprerties: 
+                
+                
+               
+    post:
+      summary: Cadastrar Funcionários
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                  name:
+                    type: string
+                  cpf:
+                    type: string
+                  office:
+                   type: string
+                  birthday:
+                    type : string
+
+      responses:
+        201:
+          description: "Sucesso"
+          content:
+            application/json:
+              schema:
+                type: object
+    
+    /employee/{uuid}:
+    put:
+      summary: Atualizar Funcionários
+      parameters:
+      - name: uuid
+        in: path
+        schema: 
+        type: string
+        required : true
+      requestBody:
+      content: 
+        application/json:
+          schema: 
+            type: object
+            properties:
+              name:
+                type: string
+              cpf: 
+                type: string
+              office: 
+                type: string
+              birthday:
+                type: date
+              situation: 
+                type: string
+      responses: 
+        200: 
+          description: Funcionário atualizado
+          content: 
+           application/json:
+            schema:
+              type: object
+              properties:
+                employee_id: 
+                  type: string
+                name:
+                  type: string
+                cpf: 
+                  type: string
+                office: 
+                  type: string
+                birthday:
+                  type: string
+                situation: 
+                  type: string
+                createdAt: 
+                  type: string
+                updatedAt: 
+                  type: string
+        400:
+            description: Erro ao atualizar funcionário
+            content: 
+              application/json:
+              example: bad request
+            
+          
+
+  
+
