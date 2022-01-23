@@ -10,8 +10,8 @@ externalDocs:
   description: Repositório-(Github)
   url: https://github.com/MathLopes1/compass-grupo02
 servers:
-- url: http://localhost:3000/api/v1/
-  description: Url_Base
+  - url: http://localhost:3000/api/v1/
+    description: Url_Base
 paths:
   /employee:
     get:
@@ -39,9 +39,7 @@ paths:
                        type: string
                     situation: 
                        type: string
-                
-                
-               
+            
     post:
       summary: Cadastrar Funcionários
       requestBody:
@@ -50,14 +48,14 @@ paths:
             schema:
               type: object
               properties:
-                  name:
-                    type: string
-                  cpf:
-                    type: string
-                  office:
-                   type: string
-                  birthday:
-                    type : string
+                name:
+                  type: string
+                cpf:
+                  type: string
+                office:
+                  type: string
+                birthday:
+                  type: string
 
       responses:
         201:
@@ -71,58 +69,58 @@ paths:
     put:
       summary: Atualizar Funcionários
       parameters:
-      - name: uuid
-        in: path
-        schema: 
-        type: string
-        required : true
+        - name: uuid
+          in: path
+          schema:
+            type: string
+            required: true
       requestBody:
-      content: 
-        application/json:
-          schema: 
-            type: object
-            properties:
-              name:
-                type: string
-              cpf: 
-                type: string
-              office: 
-                type: string
-              birthday:
-                type: date
-              situation: 
-                type: string
-      responses: 
-        200: 
-          description: Funcionário atualizado
-          content: 
-           application/json:
+        content:
+          application/json:
             schema:
               type: object
               properties:
-                employee_id: 
-                  type: string
                 name:
                   type: string
-                cpf: 
+                cpf:
                   type: string
-                office: 
+                office:
                   type: string
                 birthday:
+                  type: date
+                situation:
                   type: string
-                situation: 
-                  type: string
-                createdAt: 
-                  type: string
-                updatedAt: 
-                  type: string
+      responses:
+        200:
+          description: Funcionário atualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  employee_id:
+                    type: string
+                  name:
+                    type: string
+                  cpf:
+                    type: string
+                  office:
+                    type: string
+                  birthday:
+                    type: string
+                  situation:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
         400:
-            description: Erro ao atualizar funcionário
-            content: 
-              application/json:
-              example: bad request
-    
-    delete: 
+          description: Erro ao atualizar funcionário
+          content:
+            application/json:
+            example: bad request
+
+    delete:
       summary: Excluir Funcionários
       parameters: 
       - name: uuid
@@ -136,7 +134,7 @@ paths:
         404: 
           example: Employee not found
     
-    /product
+  /product:
       post:
         summary: Cadastrar Produto
         requestBody:
@@ -176,7 +174,7 @@ paths:
                   updatedAt: 
                     type: string
                   
-          400: 
+          400:   
             description: produto cadastrado
               content: 
                 application/json:
@@ -185,8 +183,37 @@ paths:
                   properties:
                    example: Bad request
                 
-                  
-          
-      
-  
-
+      get:
+        summary: Listar Todos os produtos
+        parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+            
+        - in: query
+          name: max_price
+          schema:
+            type: integer
+        - in: query
+          name: min_price
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  employee_id:
+                    type: string
+                  category:
+                    type: string
+                  name:
+                    type: string
+                  min_price:
+                    type: number
+                  max_price:
+                    type: number
