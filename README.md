@@ -14,7 +14,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Swagger](https://swagger.io/)
 
 ### Pré-requisitos
-É importante a instalação paras tecnologias utilizadas descritas acima. Além disso, é preciso um editor para trabalhar com o código. Utilizamos o [VSCode](https://code.visualstudio.com/)
+É importante a instalação das tecnologias utilizadas descritas acima. Além disso, é preciso um editor para trabalhar com o código. Utilizamos o [VSCode](https://code.visualstudio.com/)
 
 #### Passos
 Antrs de testar as rotas, é importante seguir alguns passos:
@@ -70,7 +70,7 @@ POST - Cadastrar funcionários - http://localhost:3000/api/v1/employee
     "birthday": "21/04/2021"
 }
  ```
-GET - Listar funcionários - http://localhost:3000/api/v1/employee<
+GET - Listar funcionários - http://localhost:3000/api/v1/employee
 ```bash
 {
 "employees": [
@@ -124,6 +124,7 @@ POST - Cadastrar um produto - http://localhost:3000/api/v1/product
 ```
 GET - Listar produtos - http://localhost:3000/api/v1/product
 ```bash
+{
     "employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43621",
     "category": "eletronico",
     "name": "dell",
@@ -131,3 +132,46 @@ GET - Listar produtos - http://localhost:3000/api/v1/product
     "max_price":50
 }
 ```
+## Team
+Todos listados tiverem participação ativa no desenvolvimento da API
+<table>
+    <tr>
+        <td>Função</td>
+        <td>Nome</td>
+    </tr>
+    <tr>
+        <td>PO</td>
+        <td>Felipe Silva</td>
+    </tr>
+    <tr>
+        <td>Scrum Master/Dev</td>
+        <td>Tuana Sampaio</td>
+    </tr>
+    <tr>
+        <td>Deploy/Dev</td>
+        <td>Mylena Amorim</td>
+    </tr> 
+    <tr>
+        <td>QA/Dev</td>
+        <td>Matheus Lopes</td>
+    </tr>     
+    <tr>
+        <td>Code Review/Dev</td>
+        <td>Edson Junior</td>
+    </tr>     
+    <tr>
+        <td>Code Review/Dev</td>
+        <td>Maria Carolinne</td>
+    </tr>        
+</table>
+
+## Agradecimentos
+Somos extremamente gratos aos nossos instrutores e líderes por todo suporte, conhecimento, incentivos e alertas.
+
+* Felipe Silva
+* Thais Nicodemus
+* Diego Bueno
+* Bruna Santos
+* Giovanni Hoffmann
+* Gabriel Missio 
+
