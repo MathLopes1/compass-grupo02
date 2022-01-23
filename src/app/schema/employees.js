@@ -45,12 +45,20 @@ const employeeSchema = mongoose.Schema({
     }
 });
 
+function formatCpf(text) {
+    const badchars = /[^\d]/g
+    const mask = /(\d{3})(\d{3})(\d{3})(\d{2})/
+    const cpf = new String(text).replace(badchars, "");
+    return cpf.replace(mask, "$1.$2.$3-$4");
+}
+
 employeeSchema.set('toJSON', {
     transform: function (doc, ret, options) {
         delete ret._id;
         delete ret.__v;
         delete ret.createdAt;
         delete ret.updatedAt;
+        ret.cpf = formatCpf(ret.cpf);
     }
 }); 
 
