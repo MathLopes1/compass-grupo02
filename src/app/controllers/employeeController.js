@@ -1,5 +1,4 @@
 const EmployeeService = require('../service/employeeService.js');
-const employeesSchema = require('../schema/employees');
 
 class EmployeeController {
   async create(req, res) {
@@ -10,8 +9,8 @@ class EmployeeController {
       return res.status(201).json(dados);
     } catch (error) {
       return res.status(400).json({
-        'message': 'bad request',
-        'details': [{ 'message': error.message, }]
+        'message': 'Bad Request',
+        'details': [{ 'message': error.message }]
       });
     }
   }
@@ -67,8 +66,8 @@ class EmployeeController {
       return res.status(204).json();
     } catch (error) {
       return res.status(400).json({
-        'message': 'Bad Request',
-        'details': [{ 'message': error.message, }]
+        'message': 'Bad request',
+        'details': [{ 'message': error }]
       });
     }
   }

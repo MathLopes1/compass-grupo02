@@ -15,7 +15,9 @@ const employeeSchema = mongoose.Schema({
     cpf: {
         type: Number,
         require: true,
-        unique: true
+        unique: true,
+        maxlength: 11,
+        minlength: 11
     },
     office: {
         type: String,
