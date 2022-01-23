@@ -16,6 +16,9 @@ paths:
   /employee:
     get:
       summary: Listar Todos os Funcionários
+      parameters:
+      - in: query
+        name: name
       responses:
         200:
           description: Sucesso
@@ -23,7 +26,19 @@ paths:
             application/json:
               schema:
                 type: object
-                proprerties: 
+                properties:
+                    employee_id:
+                      type: string
+                    name:
+                       type: string
+                    cpf: 
+                       type: number
+                    office: 
+                       type: string
+                    birthday:
+                       type: string
+                    situation: 
+                       type: string
                 
                 
                
