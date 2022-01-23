@@ -87,7 +87,7 @@ class ProductController {
       }
 
       const allProducts = await ProductService.find();
-      return res.status(201).json(allProducts);
+      return res.status(201).json({'products': allProducts});
 
     } catch (error) {
       return res.status(400).json({
