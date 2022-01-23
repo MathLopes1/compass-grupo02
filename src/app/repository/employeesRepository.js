@@ -16,6 +16,19 @@ class employeesRepository {
   async delete(payload) {
     return employeesSchema.deleteOne(payload);
   }
+  async update(id, payload) {
+
+    await employeesSchema.updateOne({ employee_id: id }, payload);
+
+    return employeesSchema.findOne({ employee_id: id });
+
+  }
+
+  async findId(id) {
+
+    return employeesSchema.findOne({ employee_id: id });
+
+  }
 }
 
 module.exports = new employeesRepository();

@@ -44,36 +44,42 @@ class EmployeeController {
   }
   async updateEmployee(req, res) {
 
-    employeesSchema.findById(req.params.id, function (error, employee) {
+    const employeeId = req.params.employee_id;
 
-      if (error)
-        res.send('Employee id not found' + error)
+    const dados = req.body;
 
-      employee.name = req.body.name
-      employee.cpf = req.body.cpf
-      employee.office = req.body.office
-      employee.birthday = req.body.birthday
+    try {
 
-      employee.save(function (error) {
+      const updatedEmployee = await EmployeeService.update(employeeId, dados);
 
-        if (error)
-          res.send('error updating employee' + error)
+      res.status(200).json({
 
+        'employee_id': updatedEmployee.employee_id,
 
+        'name': updatedEmployee.name,
 
-        res.json({
-          '_id': employee.employee_id,
-          'name': employee.name,
-          'cpf': employee.cpf,
-          'office': employee.office,
-          'birthday': employee.birthday,
-          'situation': employee.situation,
-          'createdAt': employee.createdAt,
-          'updatedAt': employee.updatedAt
-        })
+        'cpf': updatedEmployee.cpf,
+
+        'office': updatedEmployee.office,
+
+        'birthday': updatedEmployee.birthday,
+
+        'situation': updatedEmployee.situation
+
+      });
+
+    } catch (error) {
+
+      return res.status(400).json({
+
+        'message': 'bad request',
+
+        'details': [{ 'message': error.message, }]
 
       })
-    })
+
+    }
+
   }
 
   async deleteEmployee(req, res) {
