@@ -42,7 +42,6 @@ $ npm run dev
   <tr>
     <td>Mongoose</td>
     <td>Express</td>
-    <td>Body-parser</td>
     <td>Joi</td>
     <td>UUID</td>
     <td>Nodemon</td>    
