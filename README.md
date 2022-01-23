@@ -17,7 +17,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 É importante a instalação das tecnologias utilizadas descritas acima. Além disso, é preciso um editor para trabalhar com o código. Utilizamos o [VSCode](https://code.visualstudio.com/)
 
 #### Passos
-Antrs de testar as rotas, é importante seguir alguns passos:
+Antes de testar as rotas, é importante seguir alguns passos:
 
 ```bash
 # Clone este repositório
@@ -37,7 +37,7 @@ $ npm run dev
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
 ```
-Bibliotecas utizadas:
+:file_folder: Bibliotecas utizadas:
 <table>
   <tr>
     <td>Mongoose</td>
@@ -132,7 +132,7 @@ GET - Listar produtos - http://localhost:3000/api/v1/product
     "max_price":50
 }
 ```
-## Team
+## Team :man_technologist::trophy:	
 Todos listados tiverem participação ativa no desenvolvimento da API
 <table>
     <tr>
