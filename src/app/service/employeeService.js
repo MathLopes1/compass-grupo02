@@ -9,6 +9,13 @@ class EmployeeService {
       'birthday': new Date(payload.birthday)
     });
 
+    function formatCpf(text) {
+      const badchars = /[^\d]/g
+      const mask = /(\d{3})(\d{3})(\d{3})(\d{2})/
+      const cpf = new String(text).replace(badchars, "");
+      return cpf.replace(mask, "$1.$2.$3-$4");
+    }
+
     function convertDateToPt(date) {
       let datePt = date.toLocaleString('en-US', {
         day: '2-digit',
@@ -22,7 +29,7 @@ class EmployeeService {
     const result = {
       'employee_id': dados.employee_id,
       'name': dados.name,
-      'cpf': dados.cpf,
+      'cpf': formatCpf(dados.cpf),
       'office': dados.office,
       'birthday': convertDateToPt(dados.birthday),
       'situation': dados.situation,
@@ -57,6 +64,13 @@ class EmployeeService {
       'situation': payload.situation,
     });
 
+    function formatCpf(text) {
+      const badchars = /[^\d]/g
+      const mask = /(\d{3})(\d{3})(\d{3})(\d{2})/
+      const cpf = new String(text).replace(badchars, "");
+      return cpf.replace(mask, "$1.$2.$3-$4");
+    }
+
     function convertDateToPt(date) {
       let datePt = date.toLocaleString('en-US', {
         day: '2-digit',
@@ -70,7 +84,7 @@ class EmployeeService {
     const result = {
       'employee_id': dados.employee_id,
       'name': dados.name,
-      'cpf': dados.cpf,
+      'cpf': formatCpf(dados.cpf),
       'office': dados.office,
       'birthday': convertDateToPt(dados.birthday),
       'situation': dados.situation
