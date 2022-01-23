@@ -12,6 +12,10 @@ class employeesRepository {
   async findOne(payload){
     return employeesSchema.findOne(payload);
   }
+
+  async delete(payload) {
+    return employeesSchema.deleteOne(payload);
+  }
 }
 
 module.exports = new employeesRepository();

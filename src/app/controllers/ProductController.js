@@ -2,7 +2,7 @@ const ProductService = require('../service/productService.js');
 
 class ProductController {
 
-  async create(req, res) {
+  async createProduct(req, res) {
     try {
       const result = await ProductService.create(req.body);
       return res.status(201).json(result);
@@ -25,7 +25,7 @@ class ProductController {
         const queryProducts = await ProductService.find({ name: { $regex: name }, price: { $lte: max_price, $gte: min_price } });
 
         if (!queryProducts.length) {
-          return res.status(201).json({message: "No products found!" });
+          return res.status(404).json({message: "No products found!" });
         }
 
         return res.status(201).json(queryProducts);
@@ -34,7 +34,7 @@ class ProductController {
         const queryProducts = await ProductService.find({ name: { $regex: name }, price: { $lte: max_price } });
 
         if (!queryProducts.length) {
-          return res.status(201).json({message: "No products found!" });
+          return res.status(404).json({message: "No products found!" });
         }
 
         return res.status(201).json(queryProducts);
@@ -43,7 +43,7 @@ class ProductController {
         const queryProducts = await ProductService.find({ name: { $regex: name }, price: { $gte: min_price } });
 
         if (!queryProducts.length) {
-          return res.status(201).json({message: "No products found!" });
+          return res.status(404).json({message: "No products found!" });
         }
 
         return res.status(201).json(queryProducts);
@@ -52,7 +52,7 @@ class ProductController {
         const queryProducts = await ProductService.find({ price: { $lte: max_price, $gte: min_price } });
 
         if (!queryProducts.length) {
-          return res.status(201).json({message: "No products found!" });
+          return res.status(404).json({message: "No products found!" });
         }
         
         return res.status(201).json(queryProducts);
@@ -61,7 +61,7 @@ class ProductController {
         const queryProducts = await ProductService.find({ name: { $regex: name } });
 
         if (!queryProducts.length) {
-          return res.status(201).json({message: "No products found!" });
+          return res.status(404).json({message: "No products found!" });
         }
 
         return res.status(201).json(queryProducts);
@@ -70,7 +70,7 @@ class ProductController {
         const queryProducts = await ProductService.find({ price: { $lte: max_price } });
 
         if (!queryProducts.length) {
-          return res.status(201).json({message: "No products found!" });
+          return res.status(404).json({message: "No products found!" });
         }
 
         return res.status(201).json(queryProducts);
@@ -79,7 +79,7 @@ class ProductController {
         const queryProducts = await ProductService.find({ price: { $gte: min_price } });
 
         if (!queryProducts.length) {
-          return res.status(201).json({message: "No products found!" });
+          return res.status(404).json({message: "No products found!" });
         }
 
         return res.status(201).json(queryProducts);

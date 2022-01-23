@@ -1,4 +1,4 @@
-const EmployeeController = require('../app/controllers/employeeController');
+const EmployeeController = require('../app/controllers/employeeController.js');
 
 module.exports = (server, routes, prefix = '/app/v1/employee') => {
   routes.post('/',  EmployeeController.create)

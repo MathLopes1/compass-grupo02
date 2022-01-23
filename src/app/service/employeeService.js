@@ -15,6 +15,11 @@ class EmployeeService {
     const employee = await EmployeesRepository.findOne(payload);
     return employee;
   }
+
+  async delete(payload){
+    const employee = await EmployeesRepository.delete(payload);
+    return employee;
+  }
 }
 
 
