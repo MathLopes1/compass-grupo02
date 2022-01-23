@@ -44,6 +44,7 @@ $ npm run dev
     <td>Express</td>
     <td>Joi</td>
     <td>UUID</td>
+    <td>Env</td>
     <td>Nodemon</td>    
   </tr>
 </table>
