@@ -3,8 +3,7 @@
 
 
 ## Descrição do Projeto
-Dona Maria abriu uma Lojinha para venda de doces caseiros. Para a melhor administração de sua empresinha, resolveu pedir ajuda para organizar seus funcionários e produtos. <br>
-Nesse cenário, construimos uma API com duas entidades - funcionarios e produtos - para ajudar Maria em suas atividades.  
+Dona Maria abriu uma Lojinha para venda de doces caseiros. Para a melhor administração de sua empresinha, resolveu pedir ajuda para organizar seus funcionários e produtos. Nesse cenário, construimos uma API com duas entidades - funcionarios e produtos - para ajudar Maria em suas atividades.  
 
 ### 🛠 Tecnologias
 As seguintes ferramentas foram usadas na construção do projeto:
@@ -15,9 +14,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Swagger](https://swagger.io/)
 
 ### Pré-requisitos
-É importante a instalação paras tecnologias utilizadas descritas acima. Além disso, é preciso um editor para trabalhar com o código. <br>
-Recomendamos:
--[VSCode](https://code.visualstudio.com/)
+É importante a instalação paras tecnologias utilizadas descritas acima. Além disso, é preciso um editor para trabalhar com o código. Utilizamos o [VSCode](https://code.visualstudio.com/)
 
 #### Passos
 Antrs de testar as rotas, é importante seguir alguns passos:
@@ -31,6 +28,9 @@ $ cd compass-grupo02
 
 # Instale as dependências
 $ npm install
+
+# Instale as dev dependências
+$ npm install --save-dev
 
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev
@@ -46,14 +46,6 @@ Bibliotecas utizadas:
     <td>Joi</td>
     <td>UUID</td>
     <td>Nodemon</td>    
-  </tr>
-  <tr>
-    <td>npm install mongoose</td>
-    <td>npm install express</td>
-    <td>npm install body-parser</td>
-    <td>npm install --save-dev joi</td>
-    <td>npm install --save-dev uuid</td>
-    <td>npm install --save-dev nodemon</td>    
   </tr>
 </table>
 
@@ -72,28 +64,51 @@ Bibliotecas utizadas:
 POST - Cadastrar funcionários - http://localhost:3000/api/v1/employee
  ```bash
 {
-"name": "maria da silva",
-"cpf": "12312312312",
-"office": "gerente",
-"birthday": "21/04/2021"
+    "name": "maria da silva",
+    "cpf": "12312312312",
+    "office": "gerente",
+    "birthday": "21/04/2021"
 }
  ```
-GET - Listar funcionários - http://localhost:3000/api/v1/employee<br>
+GET - Listar funcionários - http://localhost:3000/api/v1/employee<
+```bash
+{
+"employees": [
+                {
+                    "employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43621",
+                    "name": "maria da silva",
+                    "cpf": "123.123.123-12",
+                    "office": "gerente",
+                    "birthday": "21/04/2021",
+                    "situation": "active"
+                }, {
+                    "employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43622",
+                    "name": "joão da silva",
+                    "cpf": "123.123.123-13",
+                    "office": "gerente",
+                    "birthday": "21/04/2021",
+                    "situation": "deactivate"
+                }
+            ]
+}
+
+
+```
 GET - Listar por query params - http://localhost:3000/api/v1/employee/?name=fulano
  ```bash
  {
-{
-"name": "silva",
-"office": "gerente"
-}
+    {
+        "name": "silva",
+        "office": "gerente"
+    }
 }
  ```
 PUT - Atualizar funcionários - http://localhost:3000/api/v1/employee/:employee_id
 ```bash
 {
-"name": "maria da roberta",
-"office": "funcionario",
-"situation": "deactivate"
+    "name": "maria da roberta",
+    "office": "funcionario",
+    "situation": "deactivate"
 }
 ```
 DELETE - Deletar funcionários - http://localhost:3000/api/v1/employee/:employee_id
@@ -101,18 +116,18 @@ DELETE - Deletar funcionários - http://localhost:3000/api/v1/employee/:employee
 POST - Cadastrar um produto - http://localhost:3000/api/v1/product
 ```bash
 {
-"name": "notebook dell",
-"category": "eletronico",
-"price": "12.32",
-"employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43621"
+    "name": "notebook dell",
+    "category": "eletronico",
+    "price": "12.32",
+    "employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43621"
 }
 ```
 GET - Listar produtos - http://localhost:3000/api/v1/product
 ```bash
-"employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43621",
-"category": "eletronico",
-"name": "dell",
-"min_price": 10.5,
-"max_price":50
+    "employee_id": "a99e8bf7-fa32-4ae7-8b53-5e00b9d43621",
+    "category": "eletronico",
+    "name": "dell",
+    "min_price": 10.5,
+    "max_price":50
 }
 ```
