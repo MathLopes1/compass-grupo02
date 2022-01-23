@@ -6,16 +6,8 @@ class EmployeeController {
 
     try {
       const dados = await EmployeeService.create(req.body);
-      return res.status(201).json({
-        'employee_id': dados.employee_id,
-        'name': dados.name,
-        'cpf': dados.cpf,
-        'office': dados.office,
-        'birthday': dados.birthday,
-        'situation': dados.situation,
-        'createdAt': dados.createdAt,
-        'updatedAt': dados.updatedAt
-      });
+
+      return res.status(201).json(dados);
     } catch (error) {
       return res.status(400).json({
         'message': 'bad request',
@@ -35,7 +27,7 @@ class EmployeeController {
         return res.status(200).json(allEmployees);
       } else {
         const allEmployees = await EmployeeService.find({});
-        return res.status(200).json({'employees': allEmployees});
+        return res.status(200).json({ 'employees': allEmployees });
       }
     } catch (error) {
       return res.status(500).json(error.message)
@@ -46,17 +38,11 @@ class EmployeeController {
 
     const employeeId = req.params.employee_id;
     const dados = req.body;
+    
     try {
       const updatedEmployee = await EmployeeService.update(employeeId, dados);
-      res.status(200).json({
-        'employee_id': updatedEmployee.employee_id,
-        'name': updatedEmployee.name,
-        'cpf': updatedEmployee.cpf,
-        'office': updatedEmployee.office,
-        'birthday': updatedEmployee.birthday,
-        'situation': updatedEmployee.situation
-      });
 
+      res.status(200).json(updatedEmployee);
     } catch (error) {
 
       return res.status(400).json({

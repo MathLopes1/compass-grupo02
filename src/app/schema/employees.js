@@ -13,7 +13,7 @@ const employeeSchema = mongoose.Schema({
         require: true
     },
     cpf: {
-        type: String,
+        type: Number,
         require: true,
         unique: true
     },
