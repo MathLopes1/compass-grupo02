@@ -1,21 +1,21 @@
-
 const ProductRepository = require('../../app/repository/productRepository');
+const EmployeeRepository = require('../../app/repository/employeesRepository.js');
 
 class ProductService {
 
   async create(payload) {
-      const employe = await ProductRepository.findOne({ employee_id: payload.employee_id, office: "gerente", situation: "activate" });
+    const employe = await EmployeeRepository.findOne({ employee_id: payload.employee_id, office: "gerente", situation: "activate" });
 
-      if (employe == null) {
-        throw "Employee cannot register product";
-      }
+    if (employe == null) {
+      throw "Employee cannot register product";
+    }
 
-      const result = await ProductRepository.create(payload);
+    const result = await ProductRepository.create(payload);
 
-      return result;
+    return result;
   }
 
-  async find(payload){
+  async find(payload) {
     const allProducts = await ProductRepository.find(payload);
     return allProducts;
   }
