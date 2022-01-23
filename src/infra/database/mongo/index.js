@@ -6,7 +6,8 @@ class Database {
   }
 
   connect() {
-    return mongoose.connect('mongodb://127.0.0.1:27017/employee');
+    const db = process.env.DATABASE || 'mongodb://127.0.0.1:27017/employee'
+    return mongoose.connect(db);
   }
 }
 
