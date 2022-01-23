@@ -17,8 +17,10 @@ paths:
     get:
       summary: Listar Todos os Funcionários
       parameters:
-      - in: query
-        name: name
+        - in: query
+          name: name
+          schema:
+            type: string
       responses:
         200:
           description: Sucesso
@@ -27,19 +29,19 @@ paths:
               schema:
                 type: object
                 properties:
-                    employee_id:
-                      type: string
-                    name:
-                       type: string
-                    cpf: 
-                       type: number
-                    office: 
-                       type: string
-                    birthday:
-                       type: string
-                    situation: 
-                       type: string
-            
+                  employee_id:
+                    type: string
+                  name:
+                    type: string
+                  cpf:
+                    type: number
+                  office:
+                    type: string
+                  birthday:
+                    type: string
+                  situation:
+                    type: string
+
     post:
       summary: Cadastrar Funcionários
       requestBody:
@@ -64,7 +66,7 @@ paths:
             application/json:
               schema:
                 type: object
-    
+
   /employee/{uuid}:
     put:
       summary: Atualizar Funcionários
@@ -122,75 +124,74 @@ paths:
 
     delete:
       summary: Excluir Funcionários
-      parameters: 
-      - name: uuid
-        in: path
-        schema: 
-          type: string
-        required: true
-      responses: 
+      parameters:
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
         204:
           description: Funcionário excluído
-        404: 
+        404:
           example: Employee not found
-    
+
   /product:
-      post:
-        summary: Cadastrar Produto
-        requestBody:
-          content:
-            application/json:
-              schema: 
-                type: object
-                properties:
-                  employee_id:
-                    type: string
-                  name:
-                    type: string
-                  category: 
-                    type: string
-                  price: 
-                    type: number
-      responses:
-        201:
-          description: produto cadastrado
-            content: 
-              application/json:
-                schema:
-                type: object
-                properties:
-                  product_id: 
-                   type: string
-                  name: 
-                    type: string
-                  category: 
-                    type: string
-                  price: 
-                    type: number
-                  employee_id: 
-                    type: string
-                  createdAt:
-                    type: string
-                  updatedAt: 
-                    type: string
-                  
-          400:   
-            description: produto cadastrado
-              content: 
-                application/json:
-                  schema:
-                  type: object
-                  properties:
-                   example: Bad request
-                
-      get:
-        summary: Listar Todos os produtos
-        parameters:
+    post:
+      summary: Cadastrar Produto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: string
+                name:
+                  type: string
+                category:
+                  type: string
+                price:
+                  type: number
+    responses:
+      201:
+        description: produto cadastrado
+        content:
+          application/json:
+            schema:
+            type: object
+            properties:
+              product_id:
+                type: string
+              name:
+                type: string
+              category:
+                type: string
+              price:
+                type: number
+              employee_id:
+                type: string
+              createdAt:
+                type: string
+              updatedAt:
+                type: string
+      400:
+        description: produto cadastrado
+        content:
+          application/json:
+            schema:
+            type: object
+            properties:
+              example: Bad request
+
+    get:
+      summary: Listar Todos os produtos
+      parameters:
         - in: query
           name: name
           schema:
             type: string
-            
+
         - in: query
           name: max_price
           schema:
@@ -199,6 +200,7 @@ paths:
           name: min_price
           schema:
             type: integer
+
       responses:
         200:
           description: Sucesso
@@ -217,3 +219,4 @@ paths:
                     type: number
                   max_price:
                     type: number
+
