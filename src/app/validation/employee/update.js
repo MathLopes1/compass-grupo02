@@ -17,7 +17,8 @@ module.exports = async (req, res, next) => {
         }
 
         if (req.body.situation != null) {
-            if (req.body.situation !== 'deactivate') {
+            console.log(req.body.situation)
+            if ((req.body.situation != 'activate') && (req.body.situation != 'deactivate')) {
                 throw {
                     message: 'Bad Request',
                     details: 'Situation is not deactivate ou activate'
