@@ -21,17 +21,12 @@ class EmployeeService {
     return employee;
   }
   async update(id, payload) {
-
     const dados = await EmployeesRepository.update(id, payload);
-
     return dados;
-
   }
 
   async findId(id) {
-
     return EmployeesRepository.findId(id);
-
   }
 }
 

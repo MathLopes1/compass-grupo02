@@ -43,5 +43,13 @@ const employeeSchema = mongoose.Schema({
     }
 });
 
+employeeSchema.set('toJSON', {
+    transform: function (doc, ret, options) {
+        delete ret.__v;
+        delete ret.createdAt;
+        delete ret.updatedAt;
+    }
+}); 
+
 const employees = mongoose.model('Employees', employeeSchema)
 module.exports = employees;
