@@ -27,13 +27,13 @@ class EmployeeController {
   async getAllEmployees(req, res) {
     try {
       const name = req.query.name
-      if(name){
-        const allEmployees = await EmployeeService.find({name:{$regex: name}});
-        if(!allEmployees.length){
-          return res.status(404).json({message: "No products found!" });
+      if (name) {
+        const allEmployees = await EmployeeService.find({ name: { $regex: name } });
+        if (!allEmployees.length) {
+          return res.status(404).json({ message: "No products found!" });
         }
         return res.status(200).json(allEmployees);
-      }else{
+      } else {
         const allEmployees = await EmployeeService.find({});
         return res.status(200).json(allEmployees);
       }
@@ -88,11 +88,11 @@ class EmployeeController {
       const employee = await EmployeeService.findOne({ employee_id: id });
 
       if (!employee) {
-        return res.status(404).json({ message: 'Employee not found' })
+        return res.status(404).json({ message: 'Employee not found' });
       }
 
-        await EmployeeService.delete({ employee_id: id })
-        return res.status(204).json({ message: 'Employee successfully deleted' })
+      await EmployeeService.delete({ employee_id: id });
+      return res.status(204).json();
     } catch (error) {
       return res.status(400).json({
         'message': 'Bad Request',
