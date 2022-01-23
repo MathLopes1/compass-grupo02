@@ -6,7 +6,6 @@ class EmployeeController {
 
     try {
       const dados = await EmployeeService.create(req.body);
-      console.log(req.body)
       return res.status(201).json({
         'employee_id': dados.employee_id,
         'name': dados.name,
@@ -80,16 +79,23 @@ class EmployeeController {
   }
 
   async deleteEmployee(req, res) {
+    try {
+      const id = req.params.id;
+      const employee = await EmployeeService.findOne({ employee_id: id });
 
-    const id = req.params.id
+      if (!employee) {
+        return res.status(404).json({ message: 'Employee not found' })
+      }
 
-    const employee = await EmployeeService.findOne({ _id: id })
-
-    if (!employee) {
-
-      return res.status(404).json({ message: 'Employee not found' })
-
+        await EmployeeService.delete({ employee_id: id })
+        return res.status(204).json({ message: 'Employee successfully deleted' })
+    } catch (error) {
+      return res.status(400).json({
+        'message': 'Bad Request',
+        'details': [{ 'message': error.message, }]
+      });
     }
   }
 }
+
 module.exports = new EmployeeController();
