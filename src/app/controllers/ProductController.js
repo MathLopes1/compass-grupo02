@@ -1,11 +1,10 @@
 const ProductService = require('../service/productService.js');
-const productSchema = require('../schema/product.js');
 
 class ProductController {
 
   async create(req, res) {
     try {
-      const result = await productSchema.create(req.body);
+      const result = await ProductService.create(req.body);
       return res.status(201).json(result);
 
     } catch (error) {
