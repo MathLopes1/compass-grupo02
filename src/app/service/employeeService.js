@@ -61,11 +61,20 @@ class EmployeeService {
   }
 
   async update(id, payload) {
+    console.log(new Date(payload.birthday))
+    function formatDataPtToEn(data) {
+      var dia = data.split("/")[0];
+      var mes = data.split("/")[1];
+      var ano = data.split("/")[2];
+
+      return ano + '-' + ("0" + mes).slice(-2) + '-' + ("0" + dia).slice(-2);
+    }
+
     const dados = await EmployeesRepository.update(id, {
       'name': payload.name,
       'cpf': payload.cpf,
       'office': payload.office,
-      'birthday': new Date(payload.birthday),
+      'birthday': new Date(formatDataPtToEn(payload.birthday)),
       'situation': payload.situation,
     });
 
@@ -76,12 +85,9 @@ class EmployeeService {
       return cpf.replace(mask, "$1.$2.$3-$4");
     }
 
-    function convertDateToPt(date) {
-      let datePt = date.toLocaleString('en-US', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      }).replace('-', '/');
+    function convertDateEnToPt(date) {
+      let d = new Date(date).toISOString().split('T')[0];
+      let datePt = new Date(d).toISOString().replace('-', '/').split('T')[0].replace('-', '/');
 
       return datePt;
     }
@@ -91,7 +97,7 @@ class EmployeeService {
       'name': dados.name,
       'cpf': formatCpf(dados.cpf),
       'office': dados.office,
-      'birthday': convertDateToPt(dados.birthday),
+      'birthday': convertDateEnToPt(dados.birthday),
       'situation': dados.situation
     }
 

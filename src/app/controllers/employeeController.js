@@ -35,7 +35,7 @@ class EmployeeController {
   }
   async updateEmployee(req, res) {
 
-    const employeeId = req.params.employee_id;
+    const employeeId = req.params.id;
     const dados = req.body;
     
     try {
