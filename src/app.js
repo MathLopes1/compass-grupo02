@@ -19,4 +19,5 @@ class App {
     router(this.server);
   }
 }
+
 module.exports = new App().server;
