@@ -13,9 +13,11 @@ const employeeSchema = mongoose.Schema({
         require: true
     },
     cpf: {
-        type: String,
+        type: Number,
         require: true,
-        unique: true
+        unique: true,
+        maxlength: 11,
+        minlength: 11
     },
     office: {
         type: String,
@@ -42,6 +44,23 @@ const employeeSchema = mongoose.Schema({
         select: false
     }
 });
+
+function formatCpf(text) {
+    const badchars = /[^\d]/g
+    const mask = /(\d{3})(\d{3})(\d{3})(\d{2})/
+    const cpf = new String(text).replace(badchars, "");
+    return cpf.replace(mask, "$1.$2.$3-$4");
+}
+
+employeeSchema.set('toJSON', {
+    transform: function (doc, ret, options) {
+        delete ret._id;
+        delete ret.__v;
+        delete ret.createdAt;
+        delete ret.updatedAt;
+        ret.cpf = formatCpf(ret.cpf);
+    }
+}); 
 
 const employees = mongoose.model('Employees', employeeSchema)
 module.exports = employees;

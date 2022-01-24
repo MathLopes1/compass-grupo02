@@ -5,23 +5,12 @@ class EmployeeController {
 
     try {
       const dados = await EmployeeService.create(req.body);
-      console.log(req.body)
-      return res.status(201).json({
-        'employee_id': dados.employee_id,
-        'name': dados.name,
-        'cpf': dados.cpf,
-        'office': dados.office,
-        'birthday': dados.birthday,
-        'situation': dados.situation,
-        'createdAt': dados.createdAt,
-        'updatedAt': dados.updatedAt
-      });
+
+      return res.status(201).json(dados);
     } catch (error) {
       return res.status(400).json({
-        'message': 'bad request',
-        'details': [{
-          'message': error.message,
-        }]
+        'message': 'Bad Request',
+        'details': [{ 'message': error.message }]
       });
     }
   }
@@ -49,7 +38,7 @@ class EmployeeController {
         return res.status(200).json(allEmployees);
       } else {
         const allEmployees = await EmployeeService.find({});
-        return res.status(200).json(allEmployees);
+        return res.status(200).json({ 'employees': allEmployees });
       }
     } catch (error) {
       return res.status(500).json(error.message)
@@ -57,40 +46,18 @@ class EmployeeController {
   }
   async updateEmployee(req, res) {
 
-    const employeeId = req.params.employee_id;
-
+    const employeeId = req.params.id;
     const dados = req.body;
-
+    
     try {
-
       const updatedEmployee = await EmployeeService.update(employeeId, dados);
 
-      res.status(200).json({
-
-        'employee_id': updatedEmployee.employee_id,
-
-        'name': updatedEmployee.name,
-
-        'cpf': updatedEmployee.cpf,
-
-        'office': updatedEmployee.office,
-
-        'birthday': updatedEmployee.birthday,
-
-        'situation': updatedEmployee.situation
-
-      });
-
+      res.status(200).json(updatedEmployee);
     } catch (error) {
 
       return res.status(400).json({
-
         'message': 'bad request',
-
-        'details': [{
-          'message': error.message,
-        }]
-
+        'details': [{ 'message': error.message, }]
       })
 
     }
@@ -98,20 +65,23 @@ class EmployeeController {
   }
 
   async deleteEmployee(req, res) {
+    try {
+      const id = req.params.id;
+      const employee = await EmployeeService.findOne({ employee_id: id });
 
-    const id = req.params.id
+      if (!employee) {
+        return res.status(404).json({ message: 'Employee not found' });
+      }
 
-    const employee = await EmployeeService.findOne({
-      _id: id
-    })
-
-    if (!employee) {
-
-      return res.status(404).json({
-        message: 'Employee not found'
-      })
-
+      await EmployeeService.delete({ employee_id: id });
+      return res.status(204).json();
+    } catch (error) {
+      return res.status(400).json({
+        'message': 'Bad request',
+        'details': [{ 'message': error }]
+      });
     }
   }
 }
+
 module.exports = new EmployeeController();
