@@ -35,6 +35,9 @@ $ npm install --save-dev
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev
 
+# Execute a aplicação em modo de produção
+$ npm run start
+
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
 ```
 :file_folder: Bibliotecas utizadas:
