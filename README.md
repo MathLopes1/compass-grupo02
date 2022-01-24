@@ -185,4 +185,3 @@ Somos extremamente gratos aos nossos instrutores e líderes por todo suporte, co
 * Bruna Santos
 * Giovanni Hoffmann
 * Gabriel Missio 
-
