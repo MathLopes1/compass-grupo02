@@ -29,18 +29,24 @@ paths:
               schema:
                 type: object
                 properties:
-                  employee_id:
-                    type: string
-                  name:
-                    type: string
-                  cpf:
-                    type: number
-                  office:
-                    type: string
-                  birthday:
-                    type: string
-                  situation:
-                    type: string
+                  employee:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        employee_id:
+                          type: string
+                        name:
+                          type: string
+                        cpf:
+                          type: number
+                        office:
+                          type: string
+                        birthday:
+                          type: string
+                        situation:
+                          type: string
+  
 
     post:
       summary: Cadastrar Funcionários
