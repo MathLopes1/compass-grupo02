@@ -1,4 +1,8 @@
-const Joi = require('joi');
+const JoiRequire = require('joi');
+
+const dateJoin = require ('@joi/date');
+
+const Joi = JoiRequire.extend(dateJoin);
 
 module.exports = async (req, res, next) => {
   try {
@@ -14,7 +18,7 @@ module.exports = async (req, res, next) => {
       name: Joi.string().required(),
       cpf: Joi.number().required(),
       office: Joi.string().required(),
-      birthday: Joi.date().max('now').required()
+      birthday: Joi.date().format('DD/MM/YYYY').max('now').required()
     });
 
     const { error } = await schema.validate(req.body, { abortEarl: true });
