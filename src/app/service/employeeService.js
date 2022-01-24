@@ -61,7 +61,6 @@ class EmployeeService {
   }
 
   async update(id, payload) {
-    console.log(new Date(payload.birthday))
     function formatDataPtToEn(data) {
       var dia = data.split("/")[0];
       var mes = data.split("/")[1];
