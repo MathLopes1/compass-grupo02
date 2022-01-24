@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Delicias da Maria
-  description: API da Delicias da Maria,para gerenciamento de funcionários e produtos
+  description: API Delicias da Maria, para gerenciamento de funcionários e produtos
   version: 0.0.1
   license:
     name: "Lincença: GPLv3"
@@ -10,15 +10,23 @@ externalDocs:
   description: Repositório-(Github)
   url: https://github.com/MathLopes1/compass-grupo02
 servers:
-  - url: http://localhost:3000/api/v1/
-    description: Url_Base
+- url: http://localhost:3000/api/v1/
+  description: API Dona Maria
 paths:
   /employee:
     get:
       summary: Listar Todos os Funcionários
       parameters:
-      - in: query
-        name: name
+      - name: name
+        in: query
+        schema:
+          type: string
+        required: false
+      - name: office
+        in: query
+        schema:
+          type: string
+        required: false
       responses:
         200:
           description: Sucesso
@@ -39,8 +47,7 @@ paths:
                        type: string
                     situation: 
                        type: string
-            
-    post:
+    post: 
       summary: Cadastrar Funcionários
       requestBody:
         content:
@@ -56,24 +63,44 @@ paths:
                   type: string
                 birthday:
                   type: string
-
-      responses:
+      responses: 
         201:
-          description: "Sucesso"
+          description: Sucesso
           content:
             application/json:
               schema:
                 type: object
-    
+                properties: 
+                  name:
+                    type: string
+                  cpf:
+                    type: string
+                  office: 
+                    type: string
+                  birthday:
+                    type: string
+                  situation:
+                    type: string
+                  employee_id: 
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+        400:
+          description: Cadastro falhou
+          content:
+            application/json: 
+              example: "Employee not registered"
   /employee/{uuid}:
     put:
-      summary: Atualizar Funcionários
+      summary: Atualiza um Funcionario.
       parameters:
-        - name: uuid
-          in: path
-          schema:
-            type: string
-            required: true
+      - name: uuid
+        in: path
+        schema:
+          type: string
+        required: true
       requestBody:
         content:
           application/json:
@@ -87,8 +114,8 @@ paths:
                 office:
                   type: string
                 birthday:
-                  type: date
-                situation:
+                  type: string
+                situation: 
                   type: string
       responses:
         200:
@@ -118,45 +145,49 @@ paths:
           description: Erro ao atualizar funcionário
           content:
             application/json:
-            example: bad request
-
+              example: "bad request"
     delete:
       summary: Excluir Funcionários
-      parameters: 
+      parameters:
       - name: uuid
         in: path
-        schema: 
+        schema:
           type: string
         required: true
       responses: 
         204:
           description: Funcionário excluído
-        404: 
-          example: Employee not found
-    
-  /product:
-      post:
-        summary: Cadastrar Produto
-        requestBody:
           content:
             application/json:
-              schema: 
-                type: object
-                properties:
-                  employee_id:
-                    type: string
-                  name:
-                    type: string
-                  category: 
-                    type: string
-                  price: 
-                    type: number
-      responses:
+              example: "Deleted employee"
+        404:
+          description: Erro ao deletar funcionário
+          content:
+            application/json:
+              example: "Employee not found"
+  /product:
+    post:
+      summary: Cadastrar Produto
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                employee_id:
+                  type: string
+                name:
+                  type: string
+                category: 
+                  type: string
+                price: 
+                  type: number
+      responses: 
         201:
           description: produto cadastrado
-            content: 
-              application/json:
-                schema:
+          content:
+             application/json:
+              schema:
                 type: object
                 properties:
                   product_id: 
@@ -173,32 +204,26 @@ paths:
                     type: string
                   updatedAt: 
                     type: string
-                  
-          400:   
-            description: produto cadastrado
-              content: 
-                application/json:
-                  schema:
-                  type: object
-                  properties:
-                   example: Bad request
-                
-      get:
-        summary: Listar Todos os produtos
-        parameters:
-        - in: query
-          name: name
-          schema:
-            type: string
-            
-        - in: query
-          name: max_price
-          schema:
-            type: integer
-        - in: query
-          name: min_price
-          schema:
-            type: integer
+        400:   
+          description: produto cadastrado
+          content: 
+            application/json:
+                   example: "Bad request"
+    get:
+      summary: Listar Todos os produtos
+      parameters:
+      - in: query
+        name: name
+        schema:
+          type: string
+      - in: query
+        name: max_price
+        schema:
+          type: integer
+      - in: query
+        name: min_price
+        schema:
+          type: integer
       responses:
         200:
           description: Sucesso
