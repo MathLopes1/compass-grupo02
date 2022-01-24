@@ -45,6 +45,7 @@ $ npm run dev
     <td>Joi</td>
     <td>UUID</td>
     <td>Env</td>
+    <td>CORS</td>
     <td>Nodemon</td>    
   </tr>
 </table>
@@ -57,7 +58,7 @@ $ npm run dev
 - [x] Criar um endpoint para deletar funcionário
 - [x] Criar um endpoint para cadastrar um produto
 - [x] Criar um endpoint para listar produtos
-- [ ] Validações
+- [x] Validações
  
  ## Testar as Rotas
 
