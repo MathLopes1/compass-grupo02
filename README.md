@@ -132,6 +132,16 @@ GET - Listar produtos - http://localhost:3000/api/v1/product
     "max_price":50
 }
 ```
+GET - Listar produtos por query params - http://localhost:3000/api/v1/product/?name=dell
+```bash
+ {
+   {
+        "name": "dell",
+        "min_price": "00",
+        "max_price": "10"
+   }
+}
+```
 ## Team :man_technologist::trophy:	
 Todos listados tiverem participação ativa no desenvolvimento da API
 <table>
