@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@joi/date": "^2.1.0",
+    "cors": "^2.8.5",
     "env": "0.0.2",
     "joi": "^17.5.0",
     "nodemon": "^2.0.15",
