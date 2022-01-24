@@ -18,10 +18,22 @@ class EmployeeController {
   async getAllEmployees(req, res) {
     try {
       const name = req.query.name
+      const office = req.query.office
+
       if (name) {
-        const allEmployees = await EmployeeService.find({ name: { $regex: name } });
+        const allEmployees = await EmployeeService.find({
+          name: {
+            $regex: name
+          }
+        }, {
+          office: {
+            $regex: office
+          }
+        });
         if (!allEmployees.length) {
-          return res.status(404).json({ message: "No products found!" });
+          return res.status(404).json({
+            message: "No Employee found!"
+          });
         }
         return res.status(200).json(allEmployees);
       } else {
@@ -31,7 +43,6 @@ class EmployeeController {
     } catch (error) {
       return res.status(500).json(error.message)
     }
-
   }
   async updateEmployee(req, res) {
 

@@ -26,4 +26,5 @@ class employeesRepository {
   }
 }
 
+
 module.exports = new employeesRepository();
